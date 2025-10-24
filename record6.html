@@ -1,0 +1,108 @@
+<html>
+
+<body bgcolor="aqua">
+
+<h1><font color = "red"> STRING AND MATH FUNCTIONS </font></h1>
+
+
+<h2><font color = "purple"> String Functions </font></h2>
+
+<script>
+
+var str="This is string literal";
+document.write("1.\n string is:"+str);
+
+var stringname=new String("2.\n hello javascript string");
+document.write("<br><br>"+stringname);
+
+var str="javascript";
+document.write("<br><br><br>3.\n"+str)
+document.write("<br><br>4th position:"+str.charAt(4));
+
+var s1="javascript ";
+var s2="concat example";
+var s3=s1.concat(s2);
+document.write("<br><br>4.\n"+ s1 +"\n concatinate with \n"+ s2 +"\n is:"+s3);
+
+var s1="javascript from javatpoint indexof"; var
+n=s1.indexOf("from");
+document.write("<br><br><br>5.\n"+s1)
+document.write("<br><br>position of From is:"+n);
+
+var s1="javascript from javatpoint indexof";
+var n=s1.lastIndexOf("java");
+document.write("<br><br><br>6.\n"+s1);
+document.write("<br><br>last index of java is:"+n);
+
+var s1="JavaScript toLowerCase Example";
+var s2=s1.toLowerCase();
+document.write("<br><br><br>7.\n"+s1)
+document.write("<br><br>"+s2);
+
+var s1="JavaScript toUpperCase Example";
+var s2=s1.toUpperCase();
+document.write("<br><br><br>8.\n"+s1)
+document.write("<br><br>"+s2);
+
+var s1="abcdefgh";
+var s2=s1.slice(2,5);
+document.write("<br><br><br>9.\n"+s1)
+document.write("<br><br>sliced from s1 (2,5):"+s2);
+
+var s1=" javascript trim ";
+var s2=s1.trim();
+document.write("<br><br><br>10.trim:"+s2);
+
+var str="This is JavaTpoint website";
+document.write("<br><br><br>11.\n"+str)
+document.write("<br><br> This is the split form:"+str.split(" ")); 
+
+</script>
+
+<br><br><br>
+
+<h2><font color = "purple"> Math Functions </font></h2>
+
+Square Root of 17 is: <span id="p1"></span> 
+<br><br>
+
+Random value [0 to 1]: <span id="p2"></span>
+<br><br>
+
+Power of the value [4,2] is:  <span id="p3"></span>
+<br><br>
+
+Floor of the value [4.2] is:  <span id="p4"></span>
+<br><br>
+
+Ceil of the value [4.3] is:  <span id="p5"></span>
+<br><br>
+
+Round of the value [4.6] is:  <span id="p6"></span>
+<br><br>
+
+Absolute of the value [-4] is:  <span id="p7"></span>
+<br><br>
+
+
+
+<script>
+
+document.getElementById('p1').innerHTML=Math.sqrt(17);
+
+document.getElementById('p2').innerHTML=Math.random();
+
+document.getElementById('p3').innerHTML=Math.pow(4,2);
+
+document.getElementById('p4').innerHTML=Math.floor(4.2);
+
+document.getElementById('p5').innerHTML=Math.ceil(4.3);
+
+document.getElementById('p6').innerHTML=Math.round(4.6);
+
+document.getElementById('p7').innerHTML=Math.abs(-4);
+
+</script>
+</body>
+
+</html>
