@@ -1,0 +1,32 @@
+<html>
+<body>
+
+<center>
+
+  <h1>Hover over the image</h1>
+
+  <img id="pic" src="/home/ksb/Desktop/faaiqua/web/record/image/img2jpeg" width="200" 
+       onmouseover="change()" onmouseout="reset()">
+
+  <p id="text">This is the original text</p>
+
+  <script>
+  
+    function change(){
+      document.getElementById("pic").src="/home/ksb/Desktop/faaiqua/web/record/image/img3.jpeg";
+      document.getElementById("text").innerHTML="Your cursor on image!";
+    }
+
+    function reset(){
+      document.getElementById("pic").src="/home/ksb/Desktop/faaiqua/web/record/image/img2jpeg";
+      document.getElementById("text").innerHTML="This is the original text";
+    }
+    
+  </script>
+
+</center>
+
+</body>
+
+</html>
+
