@@ -137,73 +137,70 @@ var timerInterval;
 var startTime, endTime;
 
 function showQuestion() {
-var q = questions[current];
-document.getElementById("question").innerHTML = (current + 1) + ". " + q.question;
-document.getElementById("lbl0").innerHTML = q.options[0];
-document.getElementById("lbl1").innerHTML = q.options[1];
-document.getElementById("lbl2").innerHTML = q.options[2];
-document.getElementById("lbl3").innerHTML = q.options[3];
-document.getElementById("quizForm").reset();
+    var q = questions[current];
+    document.getElementById("question").innerHTML = (current + 1) + ". " + q.question;
+    document.getElementById("lbl0").innerHTML = q.options[0];
+    document.getElementById("lbl1").innerHTML = q.options[1];
+    document.getElementById("lbl2").innerHTML = q.options[2];
+    document.getElementById("lbl3").innerHTML = q.options[3];
+    document.getElementById("quizForm").reset();
 
-if (current === 0 && !timerInterval) {
-startTime = new Date();
-startTimer();
-}
+    if (current === 0 && !timerInterval) {
+        startTime = new Date();
+        startTimer();
+    }
 }
 
 function startTimer() {
-timerInterval = setInterval(function() {
-timeLeft--;
-document.getElementById("timer").innerHTML = "Time left: " + timeLeft + "s";
+    timerInterval = setInterval(function() {
+        timeLeft--;
+        document.getElementById("timer").innerHTML = "Time left: " + timeLeft + "s";
 
-if (timeLeft <= 0) {
-clearInterval(timerInterval);
-endQuiz(true);  
-}
-}, 1000);
+        if (timeLeft <= 0) {
+            clearInterval(timerInterval);
+            endQuiz(true);  
+        }
+    }, 1000);
 }
 
 function nextQuestion() {
-var selected = document.querySelector('input[name="option"]:checked');
-if (!selected) {
-alert("Please choose an answer!");
-return;
-}
+    var selected = document.querySelector('input[name="option"]:checked');
+    
+    
+    if (selected && parseInt(selected.value) === questions[current].answer) {
+        score++;
+    }
 
-if (parseInt(selected.value) === questions[current].answer) {
-score++;
-}
-
-current++;
-if (current < questions.length) {
-showQuestion();
-} else {
-endQuiz(false);
-}
+    current++;
+    if (current < questions.length) {
+        showQuestion();
+    } else {
+        endQuiz(false);
+    }
 }
 
 function endQuiz(autoSubmitted) {
-endTime = new Date();
-clearInterval(timerInterval);
+    endTime = new Date();
+    clearInterval(timerInterval);
 
-var totalSeconds = Math.floor((endTime - startTime) / 1000);
-var minutes = Math.floor(totalSeconds / 60);
-var seconds = totalSeconds % 60;
+    var totalSeconds = Math.floor((endTime - startTime) / 1000);
+    var minutes = Math.floor(totalSeconds / 60);
+    var seconds = totalSeconds % 60;
 
-document.getElementById("question").style.display = "none";
-document.getElementById("quizForm").style.display = "none";
-document.getElementById("timer").style.display = "none";
+    document.getElementById("question").style.display = "none";
+    document.getElementById("quizForm").style.display = "none";
+    document.getElementById("timer").style.display = "none";
 
-var msg = autoSubmitted
-? "<b> Time’s up!</b><br>"
-: "<center><b> Quiz Completed!</b></center><br><br>";
+    var msg = autoSubmitted
+        ? "<b> Time’s up!</b><br>"
+        : "<center><b> Quiz Completed!</b></center><br><br>";
 
-document.getElementById("result").innerHTML =
-msg +
-"Started at: " + startTime.toLocaleTimeString() + "<br><br>" +
-"Ended at: " + endTime.toLocaleTimeString() + "<br><br>" +
-"Total time taken: " + minutes + " min " + seconds + " sec<br><br><br><br>" +
-" <center>You scored " + "<h1>"+score + " <h3>out of " + questions.length;
+    document.getElementById("result").innerHTML =
+        msg +
+        "Started at: " + startTime.toLocaleTimeString() + "<br><br>" +
+        "Ended at: " + endTime.toLocaleTimeString() + "<br><br>" +
+        "Total time taken: " + minutes + " min " + seconds + " sec<br><br><br><br>" +
+        " <center>You scored " + "<h1>"+score + " <h3>out of " + questions.length;
 }
 
 showQuestion();
